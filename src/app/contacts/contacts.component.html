@@ -1,0 +1,67 @@
+<div class="container">
+   
+      <h1 style="text-align: center">Contacts</h1>      
+    
+  </div>
+
+
+
+<table id="table" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">PhoneNumber</th>
+        <th scope="col">Email</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let details of names; let i = index">
+        <th scope="row">{{details.FirstName}}</th>
+        <td>{{details.LastName}}</td>
+        <td>{{details.PhoneNumber}}</td>
+        <td>{{details.Email}}</td>
+        <td>
+          <button (click)="alert()" [routerLink]="['/details', i]" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="delete(i)" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon">
+              <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+      <tr>
+          <td>
+              <mat-form-field>
+                  <input maxlength="20" matInput placeholder="FirstName" [formControl]="first"  [(ngModel)]="FirstName" required>
+                  <mat-error *ngIf="first.invalid">{{ErrorFirst()}}</mat-error>
+                </mat-form-field>
+          </td>
+        <td>
+            <mat-form-field>
+                <input maxlength="20" matInput placeholder="LastName" [formControl]="last" [(ngModel)]="LastName" required>
+                <mat-error *ngIf="last.invalid">{{ErrorLast()}}</mat-error>
+              </mat-form-field>
+        </td>
+        <td>
+            <mat-form-field>
+                <input type="number" maxlength="20" matInput placeholder="PhoneNumber" [formControl]="phone" [(ngModel)]="PhoneNumber" required>
+                <mat-error *ngIf="phone.invalid">{{ErrorPhone()}}</mat-error>
+              </mat-form-field>
+        </td>
+        <td>
+            <mat-form-field>
+                <input maxlength="20" matInput placeholder="Email" [formControl]="email" [(ngModel)]="Email" required email>
+                <mat-error *ngIf="email.invalid">{{ErrorEmail()}}</mat-error>
+              </mat-form-field>
+        </td>
+        <td>
+            <button [disabled]="email.invalid || phone.invalid || last.invalid || first.invalid" (click)="add()" style="margin-top: 16px" mat-raised-button color="primary" aria-label="Example icon-button with a heart icon">
+                <mat-icon>add</mat-icon>
+            </button>
+
+        </td>
+      </tr>      
+    </tbody>
+  </table>

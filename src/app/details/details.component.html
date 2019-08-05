@@ -1,0 +1,70 @@
+
+<div class="container">
+   
+    <h1 style="text-align: center">Contacts</h1>      
+  
+</div>
+
+
+
+<table id="table" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">PhoneNumber</th>
+      <th scope="col">Email</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="details">
+      <th *ngIf="!Ed" scope="row">{{details.FirstName}}</th>
+      <th *ngIf="Ed"  scope="row">
+
+          <mat-form-field>
+              <input maxlength="20" matInput [(ngModel)]="details.FirstName" required>
+      
+          </mat-form-field>
+
+      </th>
+      <td *ngIf="!Ed">{{details.LastName}}</td>
+      <td *ngIf="Ed">
+
+          <mat-form-field>
+              <input maxlength="20" matInput [(ngModel)]="details.LastName" required>
+      
+          </mat-form-field>
+
+
+      </td>
+      <td *ngIf="!Ed">{{details.PhoneNumber}}</td>
+      <td *ngIf="Ed">
+
+          <mat-form-field>
+              <input maxlength="20" matInput [(ngModel)]="details.PhoneNumber" required>
+      
+          </mat-form-field>
+      </td>
+      <td *ngIf="!Ed">{{details.Email}}</td>
+      <td *ngIf="Ed">
+
+          <mat-form-field>
+              <input maxlength="20" matInput [(ngModel)]="details.Email" required>
+      
+          </mat-form-field>
+      </td>
+      <td>
+        <button *ngIf="!Ed" (click)="Edit()" mat-raised-button color="primary" aria-label="Example icon-button with a heart icon">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button *ngIf="Ed" (click)="Edit()" mat-raised-button color="primary" aria-label="Example icon-button with a heart icon">
+            <mat-icon>done</mat-icon>
+          </button>
+        
+        <button routerLink = '/contacts' mat-raised-button color="primary" aria-label="Example icon-button with a heart icon">
+            <mat-icon>save</mat-icon>
+          </button>
+       
+      </td>
+    </tr>

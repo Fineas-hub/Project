@@ -1,0 +1,27 @@
+
+
+<form [formGroup]="loginForm">
+
+
+<div id="email" class="example-container">
+
+
+  <mat-form-field>
+    <mat-label>Email address</mat-label>
+    <input maxlength="20" matInput placeholder="Enter your email" [formControl]="email" required email>
+    <mat-icon color="primary" matSuffix>email</mat-icon>
+    <mat-error *ngIf="email.invalid">{{ErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+      <input maxlength="10" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"  [formControl]="password" required password>
+      <mat-icon color="primary" style="cursor: pointer" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>     
+    <mat-error *ngIf="password.invalid">{{ErrorPassword()}}</mat-error>
+  </mat-form-field>
+ 
+  <button [disabled]="password.invalid || email.invalid" routerLink="/contacts" id="btn" mat-raised-button color="primary">Login</button>
+
+</div>
+
+
+</form>
