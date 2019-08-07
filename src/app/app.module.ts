@@ -8,6 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
+import { PersonsService } from './persons.service';
 
 
 
@@ -38,7 +39,7 @@ import { DetailsComponent } from './details/details.component';
     MatTableModule,
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [PersonsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

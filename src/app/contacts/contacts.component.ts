@@ -1,7 +1,9 @@
 import {Component, OnInit } from '@angular/core';
-import {contacts} from './contacts';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { PersonsService } from '../persons.service';
+import {contacts} from './contacts';
+
 
 @Component({
   selector: 'app-contacts',
@@ -10,13 +12,13 @@ import { Router } from '@angular/router';
 })
 export class ContactsComponent implements OnInit{
 
-    names = contacts;
     loginForm: FormGroup;
     FirstName:string;
     LastName:string;
     PhoneNumber:string;
     Email:string;
-  
+    names:contacts[];
+       
 
 
   delete(element){
@@ -27,9 +29,11 @@ export class ContactsComponent implements OnInit{
     this.names.push({FirstName:this.FirstName,LastName:this.LastName,PhoneNumber:this.PhoneNumber,Email:this.Email});
   }
 
- 
 
-  constructor(private fb: FormBuilder, private router:Router) {
+  constructor(private service:PersonsService ,private fb: FormBuilder, private router:Router) {
+    
+
+    this.names= this.service.getPersons(); 
     
     this.loginForm = fb.group({
       email:['', Validators.required, Validators.email],

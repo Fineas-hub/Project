@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PersonsService } from '../persons.service';
 import {contacts} from '../contacts/contacts';
+
 
 @Component({
   selector: 'app-details',
@@ -12,11 +14,12 @@ export class DetailsComponent implements OnInit {
  
  details;
  Ed;
+ names:contacts[];
 
 
 
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private service:PersonsService ,private route: ActivatedRoute) { }
 
   Edit(){
     this.Ed = !this.Ed;
@@ -24,8 +27,9 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
 
+    this.names = this.service.getPersons();
     this.route.paramMap.subscribe(params => {
-      this.details = contacts[+params.get('i')];
+    this.details = this.names[+params.get('i')];
     });
   
 
