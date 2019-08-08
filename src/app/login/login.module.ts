@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LoginComponent } from './login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
@@ -8,24 +9,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
-import { PersonsService } from './persons.service';
-
-
-
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { LoginModule } from './login/login.module';
-import { DetailsModule } from './details/details.module';
-import { ContactsModule } from './contacts/contacts.module';
-
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
+  imports: [CommonModule,
+  
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
@@ -33,15 +21,10 @@ import { ContactsModule } from './contacts/contacts.module';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
     MatTableModule,
     MatPaginatorModule,
-    LoginModule,
-    DetailsModule,
-    ContactsModule
-  ],
-  providers: [PersonsService],
-  bootstrap: [AppComponent]
+    AppRoutingModule],
+  declarations: [LoginComponent],
+  exports:[LoginComponent]
 })
-export class AppModule { }
- 
+export class LoginModule { }

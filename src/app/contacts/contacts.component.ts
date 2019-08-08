@@ -21,7 +21,7 @@ export class ContactsComponent implements OnInit{
        
 
 
-  delete(element){
+  delete(element: number){
     this.names.splice(element,1);
   }
 
